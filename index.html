@@ -3,75 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио</title>
+    <title>Портфолио & Цены</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
         body {
-            background-color: #0d0d0d;
-            color: #f5f5f5;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0f0f11;
+            color: #f3f4f6;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
         }
         .container {
             width: 100%;
-            max-width: 600px;
-            background: #161616;
-            border: 1px solid #262626;
-            border-radius: 12px;
-            padding: 40px 30px;
+            max-width: 420px;
+            background: #18181b;
+            border: 1px solid #27272a;
+            border-radius: 16px;
+            padding: 30px 20px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
         }
         h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-            letter-spacing: -0.5px;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #ffffff;
         }
-        p {
-            color: #888;
-            font-size: 15px;
-            margin-bottom: 30px;
+        p.subtitle {
+            font-size: 14px;
+            color: #9ca3af;
+            margin-bottom: 24px;
         }
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        a.btn {
+        .btn {
             display: block;
-            background: #222;
-            color: #fff;
-            text-decoration: none;
-            padding: 14px 20px;
-            border-radius: 8px;
-            border: 1px solid #333;
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
+            background-color: #27272a;
+            color: #ffffff;
+            border: 1px solid #3f3f46;
+            border-radius: 10px;
+            font-size: 15px;
             font-weight: 500;
+            cursor: pointer;
             transition: all 0.2s ease;
+            text-decoration: none;
         }
-        a.btn:hover {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
+        .btn:hover {
+            background-color: #3f3f46;
+            border-color: #52525b;
+        }
+        .section-content {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #202023;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 14px;
+            color: #d1d5db;
+            border: 1px solid #2f2f35;
+        }
+        .section-content.active {
+            display: block;
+        }
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #2a2a2e;
+        }
+        .price-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .price {
+            color: #34d399;
+            font-weight: 600;
+        }
+        .back-btn {
+            background-color: transparent;
+            border: none;
+            color: #9ca3af;
+            font-size: 13px;
+            margin-top: 12px;
+            cursor: pointer;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+
     <div class="container">
         <h1>Мое Портфолио</h1>
-        <p>Добро пожаловать на мой сайт!</p>
-        <div class="links">
-            <a href="#" class="btn">Обо мне</a>
-            <a href="#" class="btn">Мои проекты</a>
-            <a href="#" class="btn">Контакты</a>
+        <p class="subtitle">Разработка сайтов и веб-дизайн</p>
+
+        <!-- Кнопки меню -->
+        <button class="btn" onclick="showSection('about')">Обо мне</button>
+        <button class="btn" onclick="showSection('services')">Услуги и Цены</button>
+        <button class="btn" onclick="showSection('contacts')">Контакты</button>
+
+        <!-- Раздел: Обо мне -->
+        <div id="about" class="section-content">
+            <strong>Привет!</strong> Я занимаюсь созданием сайтов, версткой и веб-разработкой. Делаю стильно, быстро и качественно.
+            <br><br>
+            <button class="back-btn" onclick="hideSections()">Закрыть</button>
+        </div>
+
+        <!-- Раздел: Цены -->
+        <div id="services" class="section-content">
+            <strong>Прайс-лист:</strong><br><br>
+            <div class="price-item">
+                <span>Лендинг (Визитка)</span>
+                <span class="price">от 5 000 ₸</span>
+            </div>
+            <div class="price-item">
+                <span>Портфолио / Сайт</span>
+                <span class="price">от 8 000 ₸</span>
+            </div>
+            <div class="price-item">
+                <span>Верстка по макету</span>
+                <span class="price">от 4 000 ₸</span>
+            </div>
+            <br>
+            <button class="back-btn" onclick="hideSections()">Закрыть</button>
+        </div>
+
+        <!-- Раздел: Контакты -->
+        <div id="contacts" class="section-content">
+            <strong>Связаться со мной:</strong>
+            <p style="margin-top: 8px; margin-bottom: 0;">Telegram: @sulejmer<br>GitHub: sulejmenovali384-cloud</p>
+            <br>
+            <button class="back-btn" onclick="hideSections()">Закрыть</button>
         </div>
     </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function hideSections() {
+            document.querySelectorAll('.section-content').forEach(el => {
+                el.classList.remove('active');
+            });
+        }
+    </script>
+
 </body>
-</html>
+    </html>
+    
